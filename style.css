@@ -1,0 +1,230 @@
+:root {
+    --bg: #0f172a;
+    --primary: #38bdf8;
+    --secondary: #0ea5e9;
+    --white: #f8fafc;
+    --gray: #94a3b8;
+    --glass: rgba(30, 41, 59, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #020617;
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 25px;
+}
+
+/* NAVBAR */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo { font-size: 1.5rem; font-weight: 700; }
+.logo span { color: var(--primary); }
+
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 500;
+    transition: 0.3s;
+}
+.nav-links a:hover { color: var(--primary); }
+
+/* PC PAR ICON CHHUPANA HAI */
+.menu-toggle {
+    display: none; 
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+/* HERO SECTION */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding-top: 80px;
+}
+
+.hero-content h1 { font-size: 3.5rem; margin: 10px 0; }
+.hero-content h2 { font-size: 1.8rem; color: var(--primary); }
+
+.hero-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.profile-image {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+    z-index: 1;
+}
+
+.glow-effect {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    background: var(--primary);
+    filter: blur(100px);
+    opacity: 0.3;
+    z-index: 0;
+}
+
+/* BUTTONS */
+.btn-group { display: flex; gap: 15px; margin-top: 30px; }
+.btn {
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+.btn-main { background: var(--primary); color: #000; }
+.btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3); }
+.btn-outline { border: 2px solid var(--primary); color: var(--primary); }
+.btn-outline:hover { background: var(--primary); color: #000; }
+
+/* SECTIONS */
+.about-section, .skills-section, .contact-section {
+    padding: 120px 0;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s all ease;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+.section-title span { color: var(--primary); }
+
+.about-card {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    color: var(--gray);
+}
+
+/* SKILLS & CONTACT */
+.skills-container, .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.skill-tag, .contact-card {
+    background: var(--glass);
+    padding: 15px 30px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    transition: 0.3s;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.skill-tag:hover, .contact-card:hover {
+    border-color: var(--primary);
+    background: rgba(56, 189, 248, 0.1);
+    transform: scale(1.05);
+}
+
+/* FOOTER */
+.footer {
+    background: linear-gradient(to top, #020617, rgba(15, 23, 42, 0.9));
+    color: var(--gray);
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    border-top: 1px solid rgba(56, 189, 248, 0.1);
+}
+.footer span { color: var(--primary); font-weight: 600; }
+
+/* MOBILE RESPONSIVE FIXES */
+@media (max-width: 768px) {
+    .menu-toggle { display: block; } /* Mobile par dikhega */
+    
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        flex-direction: column;
+        background: #0f172a;
+        width: 100%;
+        height: 100vh;
+        padding: 50px;
+        transition: 0.4s;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .nav-links.active { right: 0; }
+
+    .hero { 
+        flex-direction: column-reverse; 
+        text-align: center; 
+        padding-top: 120px; 
+        gap: 50px;
+    }
+
+    .hero-content h1 { font-size: 2.5rem; }
+    .profile-image { width: 220px; height: 220px; }
+
+    .about-section, .skills-section, .contact-section {
+        padding: 80px 0; /* Gap fixed for mobile */
+    }
+
+    .contact-links {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+.fa-whatsapp {
+    color: #25D366;
+}
